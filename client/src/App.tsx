@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import './main.css'
-
-interface Town {
-  ville_id: number;
-  ville_nom: string;
-}
+import Navbar from './components/Navbar';
+import { Town } from '../../types/src'
 
 function App() {
   const [towns, setTowns] = useState<Town[]>([]);
@@ -30,6 +27,7 @@ function App() {
 
   return (
     <>
+    <Navbar />
       <h1 className='text-3xl uppercase'>Liste des villes</h1>
       <div className="border">
         <ul>
