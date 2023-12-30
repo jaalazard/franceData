@@ -2,35 +2,26 @@ const express = require("express");
 const database = require("../database");
 const authRouter = express.Router();
 const bcrypt = require("bcrypt");
-const jose = require("jose");
-
-
-const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+const jose = require('jose')
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
-
-
+const SECRET = process.env.JWT_SECRET;
 authRouter.get("/check", async (req, res) => {
- const jwt = req.cookies.token;
-
-
- if (jwt === undefined) {
-   return res.json({ isStillConnected: false });
- }
- try {
-   const check = await jose.JWT.verify(jwt, SECRET);
-   return res.json({ isStillConnected: true });
- } catch (error) {
-   return res.json({ isStillConnected: false });
- }
+  const jwt = req.cookies.token;
+  if (jwt === undefined) {
+    return res.json({ isLoggedIn: false });
+  } else {
+    try {
+      const { payload } = await jose.jwtVerify(jwt, new TextEncoder().encode(process.env.JWT_SECRET));
+      return res.json({ isLoggedIn: true });
+    } catch (error) {
+      return res.json({ isLoggedIn: false });
+    }
+  }
 });
 
-
 authRouter.post("/register", async (req, res) => {
-  console.log('body:',req.body);
  try {
    const hadshedPassword = await bcrypt.hash(req.body.password, 10);
-   console.log(hadshedPassword);
-
    const insertedUser = await database.query(
      "INSERT INTO user (email, password) VALUES (?, ?)",
      [req.body.email, hadshedPassword]
@@ -46,7 +37,6 @@ authRouter.post("/register", async (req, res) => {
  }
 });
 
-
 authRouter.post("/login", async (req, res) => {
  try {
    const [users] = await database.query("SELECT * FROM user WHERE email = ?", [
@@ -54,19 +44,16 @@ authRouter.post("/login", async (req, res) => {
    ]);
    const user = users[0];
 
-
    const isCorrectPassword = await bcrypt.compare(
      req.body.password,
      user.password
    );
-
-
    const jwt = await new jose.SignJWT({ sub: user.email })
      .setProtectedHeader({ alg: "HS256" })
      .setIssuedAt()
      .setIssuer("http://localhost")
      .setAudience("http://localhost")
-     .setExpirationTime("2h")
+     .setExpirationTime("24h")
      .sign(new TextEncoder().encode(SECRET));
      res.cookie("token", jwt, {
        httpOnly: true,
@@ -85,7 +72,6 @@ authRouter.post("/login", async (req, res) => {
      res.status(500).json({ error: "Internal server error" });
    }
   });
-  
   
   module.exports = authRouter;
   
