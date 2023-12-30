@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import './main.css'
 import Navbar from './components/Navbar';
-import { Town } from '../../types/src'
+import { Town } from '../../types/src';
+import { useAuth } from '../contexts/AuthContext';
 
 function App() {
   const [towns, setTowns] = useState<Town[]>([]);
+  const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
 
   useEffect(() => {
     const getTowns = async () => {
@@ -28,6 +30,7 @@ function App() {
   return (
     <>
     <Navbar />
+    <h1>{isLoggedIn ? "Vous êtes connectés" : "Vous n'êtes pas connectés"}</h1>
       <h1 className='text-3xl uppercase'>Liste des villes</h1>
       <div className="border">
         <ul>
