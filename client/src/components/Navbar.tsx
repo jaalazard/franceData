@@ -1,17 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function Navbar() {
+  const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
+  const { setIsLoggedIn } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      if (response.ok) {
+        setIsLoggedIn(false);
+        <Navigate to="/" />;
+      } else {
+        console.error("Échec de la déconnexion");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la déconnexion", error);
+    }
+  };
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <img
-            src="france.png"
-            className="h-8"
-            alt="France Logo"
-          />
+        <Link to="/">
+          <img src="france.png" className="h-8" alt="France Logo" />
+        </Link>
+        <Link to="/">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             France
           </span>
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -39,21 +60,36 @@ export default function Navbar() {
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <Link to="/login"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-              >
-                Connexion
-              </Link>
+              {isLoggedIn ? (
+                <Link
+                  to="/login"
+                  className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  aria-current="page"
+                  onClick={handleLogout}
+                >
+                  Déconnexion
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                  aria-current="page"
+                >
+                  Connexion
+                </Link>
+              )}
             </li>
+            {!isLoggedIn && (
             <li>
-              <Link to="/register"
+              <Link
+                to="/register"
                 className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                 aria-current="page"
               >
                 Inscription
               </Link>
             </li>
+            )}
           </ul>
         </div>
       </div>
