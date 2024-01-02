@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
 
 export default function Register() {
   const [email, setEmail] = useState<string>("");
@@ -20,6 +21,7 @@ export default function Register() {
     });
 }
   return (
+    <Layout>
     <section className="bg-light">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-dark">
@@ -67,5 +69,6 @@ export default function Register() {
       </div>
   </div>
 </section>
+</Layout>
   );
 }
