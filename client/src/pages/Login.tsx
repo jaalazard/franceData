@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
 import { useAuth } from '../../contexts/AuthContext'
 
 export default function Login() {
@@ -29,6 +30,7 @@ if(data.isLoggedIn) {
   }
 
   return (
+    <Layout>
     <section>
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-dark">
@@ -60,5 +62,6 @@ if(data.isLoggedIn) {
       </div>
   </div>
 </section>
+</Layout>
   );
 }
