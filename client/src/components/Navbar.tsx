@@ -30,7 +30,7 @@ export default function Navbar() {
         </Link>
         <Link to="/">
           <span className="self-center text-2xl font-semibold whitespace-nowrap">
-            France
+            FranceData
           </span>
         </Link>
         <button
