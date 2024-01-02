@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    background-color: #EEE9D3;
+    font-family: 'jost'
+}
