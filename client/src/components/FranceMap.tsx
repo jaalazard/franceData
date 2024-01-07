@@ -444,12 +444,12 @@ export default function FranceMap() {
         </div>
 
         <div className="lg:w-4/12 lg:flex lg:pt-44 text-dark lg:order-3 sm:hidden">
-          <ul className="text-center">
+          <ul className="text-center p-4 sm:p-0">
             <li
               className={
                 focusedRegion === "ARA"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -465,8 +465,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "BFC"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -482,8 +482,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "BRE"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -499,8 +499,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "CVL"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -516,8 +516,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "COR"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -533,8 +533,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "GES"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -550,8 +550,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "GUA"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -567,8 +567,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "GUY"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -584,8 +584,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "HDF"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -601,8 +601,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "IDF"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -618,8 +618,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "MAR"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -635,8 +635,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "MAY"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -652,8 +652,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "NOR"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -669,8 +669,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "NAQ"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -686,8 +686,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "OCC"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -703,8 +703,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "PDL"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -720,8 +720,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "PAC"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(
@@ -737,8 +737,8 @@ export default function FranceMap() {
             <li
               className={
                 focusedRegion === "REU"
-                  ? "text-2xl text-nowrap"
-                  : "text-xl text-nowrap"
+                  ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                  : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
               }
               onMouseOver={() =>
                 handleMouseEnter(

@@ -1,5 +1,5 @@
-import Layout from "./components/Layout";
-import FranceMap from "./components/FranceMap";
+import Layout from "../components/Layout";
+import FranceMap from "../components/FranceMap";
 
 export default function Home() {
   return (
