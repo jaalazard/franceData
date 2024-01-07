@@ -29,14 +29,16 @@ const regions = [
 ];
 
 const renderRegionItem = ({ item }: { item: string }) => (
-  <TouchableOpacity>
+  <TouchableOpacity style={styles.container}>
     <Text style={styles.li}>{item}</Text>
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.light,
     flex: 1,
+    padding: 10,
     justifyContent: "center",
     alignContent: "center",
   },
@@ -47,10 +49,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   li: {
+    backgroundColor: colors.primary,
+    borderRadius: 20,
+    textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
-    marginHorizontal: 30,
     padding: 10,
+    borderWidth: 1,
   },
 });
 
