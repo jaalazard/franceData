@@ -1,4 +1,3 @@
-// authRouter.ts
 import express, { Router, Request, Response } from "express";
 import database from "../database";
 import bcrypt from "bcrypt";
@@ -76,7 +75,7 @@ console.log(user);
   }
 });
 
-authRouter.post("/logout", async (res: Response) => {
+authRouter.post("/logout", async (req: Request, res: Response) => {
   res.cookie("token", "", {
     httpOnly: true,
     secure: IS_PRODUCTION,
