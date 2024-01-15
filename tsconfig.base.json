@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "strict": false, // Désactive strict
+    "noUnusedLocals": false, // Autorise les variables locales non utilisées
+    "noUnusedParameters": false, // Autorise les paramètres non utilisés
+    "noFallthroughCasesInSwitch": false, // Autorise les cas de commutation sans 'break'
+    "isolatedModules": false, // Désactive les modules isolés
+    "noEmit": false
+  },
+  "files": [],
+  "references": [
+    { "path": "./client" },
+    { "path": "./server" }
+  ]
+}
