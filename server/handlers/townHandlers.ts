@@ -1,6 +1,7 @@
-const database = require('../database');
+import { Request, Response } from 'express';
+import database from '../database';
 
-const getTenTowns = (req, res) => {
+const getTenTowns = (req: Request, res: Response) => {
   database
     .query('SELECT * FROM ville LIMIT 10')
     .then((data) => {
@@ -13,6 +14,4 @@ const getTenTowns = (req, res) => {
     });
 };
 
-module.exports = {
-  getTenTowns,
-};
+export { getTenTowns };
