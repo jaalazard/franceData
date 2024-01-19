@@ -69,8 +69,8 @@ export default function RegionDetails() {
       <div className="flex items-center justify-center">
         <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-1">
           {departments.map((department: Department) => (
-            <div className="max-w-lg rounded-xl overflow-hidden shadow-xl hover:scale-105 transition duration-700">
-              <Link to="#">
+            <div key={department.departement_id} className="max-w-lg rounded-xl overflow-hidden shadow-xl hover:scale-105 transition duration-700">
+              <Link to={`/departement/${department.departement_id}`}>
                 <img
                   className="w-full"
                   src="https://medias.caravelis.com/proxy_caravelis/xml/oi/TFO225648159187/TFO225648159187-17a/medias/jpg/espalion_w2000.jpg"
@@ -80,7 +80,7 @@ export default function RegionDetails() {
                   {department.departement_nom}
                 </div>
               </Link>
-            </div>
+            </div> 
           ))}
         </div>
       </div>
