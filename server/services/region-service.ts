@@ -27,7 +27,7 @@ const getRegionById = async (req: Request, res: Response) => {
 const getDepartmentsByRegion = async (req: Request, res: Response) => {
   try {
     const regionId = req.params.regionId;
-    const data = await database.query(`SELECT departement_nom FROM departement WHERE departement_region = '${regionId}' ORDER BY departement_nom ASC`);
+    const data = await database.query(`SELECT * FROM departement WHERE departement_region = '${regionId}' ORDER BY departement_nom ASC`);
     const departments = data[0];
     res.status(200).json(departments);
   } catch (err) {

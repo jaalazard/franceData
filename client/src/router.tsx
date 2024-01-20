@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RegionDetails from "./pages/RegionDetails";
+import DepartmentDetails from "./pages/DepartmentDetails";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/region/:id",
     element: <RegionDetails />,
+  },
+  {
+    path: "/departement/:id",
+    element: <DepartmentDetails />,
   },
   {
     path: "*",

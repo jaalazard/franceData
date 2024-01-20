@@ -30,7 +30,6 @@ export default function FranceMap() {
       controller.abort();
     };
   }, []);
-  console.log(regions);
 
   const handleMouseEnter = (regionId: SetStateAction<string>) => {
     setFocusedRegion(regionId);
@@ -38,10 +37,6 @@ export default function FranceMap() {
 
   const handleMouseLeave = () => {
     setFocusedRegion("");
-  };
-
-  const handleMouseClick = (region: string) => {
-    console.log(region);
   };
 
   return (
@@ -71,11 +66,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path d="M302.6,0L239.34,11.07L135.95,75.39L139.52,88.21L87.23,74.5L78.37,176.39L0.56,227.94L5.95,287L90.63,400.5L82.34,459.06L98.6,496.51L158.7,567.17L222.83,581.79L263,623.7L345.88,665.51L432.26,696.71L478.09,692.79L508.33,714.5L722.24,684.4L763.75,644.39L756.22,537.73L799.44,399.85L787.55,376.42L730.88,349.04L673.5,274.27L628.35,201.68L620.68,128.51L562.55,63.13L485.5,33.54L331.12,18.84L302.6,0z" />
               </Link>
@@ -103,11 +93,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path d="M266.13,78.95l11.7,5.66l16.27,5.95l2.49,3.53l2.03,0.46l1.8,2.14l5.04,2.83l4.75,1.91l7.35,-0.4l3.76,2.14l4.17,0.98l4.23,1.85l9.09,5.89l4.57,2.14l-0.06,0.46l3.13,2.14l1.45,-0.29l2.09,2.48l-0.29,-1.1l1.16,-1.1l2.84,2.31l0.52,0.87l-0.4,0.92l1.22,-0.12l3.3,3.18l-0.17,1.39l-0.58,0.52l-1.04,-0.23l0.35,0.4l1.56,0.64l1.16,-0.29l0.64,0.75l1.91,0.35l3.13,2.31l0.12,1.27l0.35,-1.73l1.45,0.41l1.27,1.96l-0.11,0.69l0.93,0.12l1.22,1.73l0.7,2.43l0.58,0.58l0.7,-0.35l1.45,1.39l0.7,4.1l0.98,1.04l1.85,0.46l2.03,3.18l10.71,7.34l1.51,-0.12l1.33,3.29l3.82,4.16l2.49,1.39l-0.11,0.46l-1.16,-0.17l-0.75,1.56l8.16,4.97l3.76,4.74l4.81,4.33l5.73,2.14l2.49,3.06l1.8,0.58l4.46,3.29l0.46,-0.52l1.62,1.67l-0.29,0.58l1.74,0.64v0.69l1.56,0.75l0.75,1.56l2.95,2.54l0.87,0.35l0.29,-0.4l0.87,0.75l0.06,0.87l1.91,-0.12l-0.23,1.33l1.22,0.69l1.04,-0.29l0.75,1.44l-0.29,0.92l2.66,1.91l3.71,6.35l3.42,2.94l2.14,0.98l3.19,0.06l1.22,-2.25l-0.87,-2.31l0.52,-0.98h1.68l0.35,-0.63l1.45,0.4l2.09,-1.5l1.8,0.06l0.29,1.16l1.22,0.98l1.85,-0.17l0.46,2.19l5.21,3.93v0.75l-1.1,0.17l0.06,1.79l3.42,2.42l0.52,1.96l4.69,4.45l3.01,0.46l1.8,1.21l1.85,2.54l0.17,1.73l1.33,0.98l0.81,0.35l0.23,-0.87l0.81,1.21l1.74,-0.4l2.14,1.62l1.22,3.81l2.61,1.67l0.12,-0.69l-1.04,-1.62l3.88,2.48l-0.35,1.33l0.64,0.69l0.75,-0.81l1.27,0.92l0.98,1.15h-0.4l0.35,0.92l0.81,-0.11l0.64,0.69l0.35,-0.35l6.6,4.68l1.56,0.23l4.75,3.23l1.27,-0.17l0.41,0.64l-0.4,0.23l1.22,1.56l-0.98,-0.06l0.52,0.81l2.08,0.64l1.04,1.33l0.52,-0.29l1.39,4.27l0.52,0.92l0.87,0.06l-0.78,0.62l2.36,1.68l3.99,2.58l7.02,0.43l4.97,-3.12l1.04,-1.62l2.26,-0.17l5.33,1.85l0.46,0.81l1.56,0.35l0.29,0.75l3.82,1.79l3.01,3.17l1.51,0.81l-0.4,0.75l2.84,1.44l-0.11,0.64l2.37,3.12l-0.23,-1.33l0.52,0.52l1.33,3.17l-0.81,-0.46l0.17,0.87l2.03,2.6l-0.52,2.37l2.72,10.27l-0.29,5.48l0.75,1.33l-0.29,0.92l2.09,3.69l1.68,2.02l1.45,0.75l-0.4,1.79l-0.98,0.52l0.06,3.46l0.98,-0.17l-0.17,0.58l0.7,0.17l1.62,2.31l3.3,2.37l1.16,0.23l0.81,1.04l1.8,-0.35l0.64,-1.27l1.85,0.58l-0.23,2.31l-1.04,-0.29l-1.74,1.1l-1.62,3l0.29,0.46l-0.81,0.06l-0.75,2.13l1.04,5.54l2.78,6.35l3.07,4.27l1.62,0.92l-0.23,1.62l0.7,1.33l2.55,1.5l1.45,2.77L612,354.85l-1.76,9.16l0.23,3.75l-0.92,3.05l-4.48,9.2l-1.08,6.68l-2.8,6.72l-1.58,2l-9.8,3.68l-8.47,5.36l-5.3,8.43l-1.85,10.59l-1.69,3.41l-4.41,3.94l-1.92,2.76l-3.06,2.52l-7.19,7.85l-3.83,1.8l-5.51,3.66l-0.29,1.49l1.27,5.69l-0.25,2.42l-0.43,0.72l-3.11,1.37l-3.58,0.41l-3.9,3.16l-2.86,7.5l-2.17,10.07l-7.02,7.26l-6.08,13.46l-2.06,1.59l-1.12,1.97l-2.2,6.6l-4.55,4.64l-2.57,3.61l-8.5,14.15l-1.49,3.62l-3.92,4.52l-0.83,2l0.14,2.06l-1.25,2.37l-7.48,9.37l-2.24,0.66l-2.38,-1.44l-0.81,0.14l-5.31,3.56l-3.65,7.01l0.22,4.58l-2.53,-0.01l-3.63,1.85l-1.44,3.37l-1.62,2l1.35,1.14l-2.66,1.03l-0.26,1.63l1.89,0.47l0.47,0.99l-1.1,2.33l0.12,1.2l2.97,3.05l-0.08,2.83l-0.61,2.35l-5.63,8.84l-0.35,2.18l-1.76,2.97l-2.01,8.01l-3.34,2.64l-0.38,2.79l0.39,2.23l1.97,0.04l0.56,1.42l-3.04,3.22l-3,0.22l-3.74,2.61l-11.11,21.32l0.76,1.93l-1.55,2.66l0.56,1.29l-4.19,6.4l-1.51,4.02l-2.38,3.89l-1.97,5.7l-0.73,0.73l-2.49,-0.17l-1.89,1.46l-0.12,2.23l2.23,1.63l0.04,0.99l-1.07,1.8l3.57,3.3l0.48,1.93l-2.62,5.91l-1.93,-0.68l-1.25,1.95l-0.23,2.87l0.3,0.7l0.82,0.07l0.35,1.33l-0.53,1.62l-5.31,4.73l-4.32,5.5l-2.27,-0.25l-2.09,1.42l-0.13,0.44l1.59,0.81l-0.35,2.65l-3.34,1.34l-1.54,-0.3l-1.72,2.82l0.32,1.05l-2.01,2.88l-1.15,5.49l-2.14,2.11l-5.74,1.3l-3,1.64l-1.28,2.45l-2.87,1.72l-0.64,-0.21l-6.77,2.97l-2.36,1.38l-2.05,2.28l-3,1.42l-6.69,1.6l-0.42,1.85l-2.83,0.01l-0.43,0.52l0.6,2.1l-0.67,1.55l-3.1,1.5l-1.04,3l-1.98,1.57l-0.7,3.42l-1.84,2.53l-0.94,3.09l-0.73,0.52l-6.43,-1.1l-0.6,0.94l0.52,1.16l-1.45,1.07l-9.13,2.03l-2.92,-1.75l-9.78,-2.3l-2.15,-1.67l-3.23,-5.04l-1.95,-0.54l-4.05,-0.77l-4.19,0.7l-1.38,-0.34l-3.53,1.09l-1.95,-0.43l-0.95,0.62l-5.81,-0.59l-2.09,-1.05l-5.84,-9.07l-2.33,-1.29l-3.86,-0.87l-3.62,-2.06l-6.72,0.03l-6.2,1.92l0,0l4.83,-11.21l2.21,-1.57l1.9,-2.6l-0.41,-3.06l0.42,-1.63l4.14,-3.36l2.05,-2.48l1.16,-5.2l2.53,-0.98l2.82,-0.03l-1.86,-1.62l-4.51,-0.28l-2.8,-1.09l-3.66,-5.41l-2.41,-1.92l-3.39,-0.98l-0.46,-5.24l-2.45,-1.69l0.82,-2.46l3.7,-2.16l0.71,-2.77l-0.52,-4.7l-3.71,-0.77l-2.68,-4.51l0.55,-1.18l1.85,-1.39l5.21,-1.2l1.24,-2.02l-0.2,-0.67l-2.51,-1.1l-0.52,-1.58l0.52,-1.7l-0.54,-1.42l2.1,-1.93l0.34,-1.11l0.05,-1.38l-1.4,-2.6l0.34,-4.18l0.51,-0.47l5.35,0.04l0.82,-2.25l-0.29,-1.22l-2.03,-1.91l0.7,-1.82l6.02,-7.36l1.7,-3.4l4.43,-1.93l2.16,-2.01l-0.14,-1.76l-1.66,-3.72l0.18,-3.71l3.32,-3.73l1.26,-2.95l3.54,-3.18l0.93,-5.36l0.99,-1.65l10,-4.69l1.57,-4.08l1.49,-1.56l3.45,-1.28l2.01,0.83l0.47,-4.25l-1.54,-3.82l0.39,-8.18l1.91,-5.51l4.49,-7.35l1.13,-4.67l-0.56,-3.04l-3.84,-4.61l-1.97,-0.91l-0.53,1.33l-1.04,0.76l-1.88,-0.42l-0.87,-6.33l-1.73,-2.94l-0.2,-2.98l-2.15,-0.09l-4.38,-1.74l-6.08,-8.44l2.75,-4.35l1.13,-3.5l-1.58,-7.4l0.28,-3.09l0.94,-1.5l6.84,-4.69l-0.92,-3.02l0.34,-2.28l-3.02,-2.76l-0.48,-1.99l2.33,-3.9l0.63,-3.8l4.23,-3.1l1.35,-1.81l0.72,-3.56l-1.17,-5.5l3.2,-3.15l0.2,-1.38l-1.41,-1.17l-2.55,-0.41l-3.23,2.29l-3.04,-0.76l-0.18,-1.5l1.9,-3.87l-1.61,-12.73l-3.55,-4.79l-3.74,-3.52l-2.08,-5.66l-4.1,-0.44l-6.45,-7.81l0.12,-1.28l0.93,-0.81l4.44,0.1l1.28,-0.47l1.46,-3.16l5.69,-5.69l5.1,-1.6l1.32,-2.33l0.21,-2.86l-1.03,-1.14l-3.2,-1.28l-2.61,-2.92l-3.44,-10.13l-3.4,-6.22l0.05,-3.17l-2,-2.69l-0.23,-2.41l-3.48,-1.72l-1.68,-1.87l-0.89,-2.04l-0.68,-2.73l0.02,-4.24l2.22,-3.1l3.61,-2.23l1.12,-5.12l-3.11,-3.02l-1.58,-6.54l-1.2,-0.81l-2.65,-0.1l-0.81,-3.24l0.31,-3.14l-0.57,-1.18l-5.09,-1.33l-1.77,-3.23l-6.1,0.42l0.09,-0.81l1.89,-1.32l0.28,-0.85l-1.97,-1.5l-0.7,-2.88l2.72,-1.85l0.34,-2.38l-1.54,-1.63l-0.62,-2.16l-0.71,-0.52l-4.07,0.51l-1.46,-0.96l-0.51,-4.14l-1.45,-2.12l1.82,-4.72l-0.52,-3.44l0.69,-7.78l0.84,-1.1l2.51,-0.21l2.92,-5.78l-0.46,-1.92l0.92,-5.99l-0.75,-2.69l2.05,-1.82l1.02,-4.06l-1.73,-1.68l-0.28,-1.46l-1.53,-2.2l-1.26,-0.43l-3.97,0.22l-5.17,-5.48l-3.52,-2.08l-0.63,-1.68l-2.5,-1.41l-1.89,-2.31l-0.55,-2.3l1.3,-7.94l-3.75,-1.46l-0.64,-1.54l0.33,-1.78l2.94,-4.42l-0.45,-1.3l-1.34,-1.08l-0.07,-5.73l4.68,-3.02l-3.93,-4.9l1.77,-2.37l3.91,-1.51l1.06,-3.89l2.81,-1.44l3.7,-3.12l-1.4,-3.68l2.01,-2.39l0,-0.93l-0.81,-1.31l-2.38,-1.75l-4.89,-1.66l-4.86,-3.1l-7.56,2.44l-0.12,-1.96l2.33,-2.84l0.23,-2.98l1.24,-2.17l-1.23,-1.96l0.98,-2.15l-0.36,-1.06l-6.85,-1.46l-3.7,-4.78l-0.09,-3.7l-0.75,-0.54l-2.87,-1.23l-3.31,1.53l-2.06,0.03l-1.15,-0.88l1.96,-1.29l0.11,-2.86l1.03,-3.25l-0.17,-1.94l4.24,-3.63l0.38,-1.04l-0.87,-3.84l-1.9,-0.47l-1.45,0.64l-0.84,-0.9l-1.75,0.37l-0.68,-0.61l-0.33,-2.32l1.61,-3.2l1.66,-1.88l-3.38,-1.82l-0.12,-3.08l0.66,-1.59l3.35,-1.26l0.12,-2.43l0.94,-2.58l-0.02,-1.36l-1.63,-2.88l-3.22,-1.62l1,-3.11l0.26,-5.44l0.79,-1.1l0.36,-2.45l-0.19,-1.27l-0.98,-0.88l0.76,-3.25l-0.84,-0.78l-0.58,-2.93l0.11,-0.59l1.01,-0.36l0.91,-7.84l3.31,-2.82l-0.21,-4.83l1.66,-1.42l6.2,-0.56l5.96,1.94l1.25,-0.3l1.41,-1.28l0.17,-9l-1.42,-1.87l-0.94,-3.12l-2.58,-1.37l-0.85,-1.67l-2.04,-0.9l0.37,-3.12l0,0l6.45,0.29l6.95,-0.58l20.5,5.66l4.34,-1.33l0.17,-1.1l-1.56,-0.87l0.46,-1.04L266.13,78.95z" />
@@ -138,11 +123,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path d="M331.58,0L260.62,65.77L298.96,152.49L250.85,234.64L261.07,288.19L331.94,320.15L627.11,267.99L427.27,169.3L384.07,41.87L331.58,0z M243.45,234.47L210.42,249.14L59.38,152.32L0.57,207.02L28.97,438.2L101.82,580.61L229.29,493.87L215.97,299.58L247.11,282.99L243.45,234.47z M209.1,168L218.75,165.36L202.1,168.54L209.1,168z M799.43,171.81L750.11,173.78L698.22,214.02L799.43,171.81z M684.22,341.97L684.18,344.61L686.03,342.6L684.22,341.97z M673.4,353.11L683.74,347.04L662.95,346.25L673.4,353.11z M597.02,598.18L523.57,518.81L460.58,598.31L517.05,658.12L597.02,598.18z M228.81,653.39L215.49,650.88L202.94,673.92L228.81,653.39z M204.91,651.22L199.6,650.42L206.72,654.6L204.91,651.22z M171.29,660.71L157.77,679.23L168.43,685.63L171.29,660.71z M209.58,696.42L204.55,688.6L204.99,692.66L209.58,696.42z M188.06,691.99L192.2,693.87L190.71,691.86L188.06,691.99z" />
               </Link>
@@ -170,11 +150,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path d="M685.01,430.66L670.1,419.54L687.03,439.9L717.58,454.77L740,511.65L764.95,525.27L757.8,484.71L789.38,465.97L784.23,438.59L799.62,432.44L783.23,383.04L755.28,355.39L698.8,423.57L726.41,406.73L707.07,443.29L691.97,431.9L698.21,424.34L685.01,430.66zM368.21,1058.34L397.52,1022.78L391.03,1000.42L420.82,986.23L436.5,995.39L446.52,1042.15L457.2,1041.81L460.74,1015.51L498.84,1021.58L528.37,985.29L503.86,986.91L454.28,958.12L428.2,903.77L439.58,888.37L457.49,893.24L448.73,860.4L479.23,815.96L540.94,828.62L512.22,810.61L511.08,756.21L567.06,726.19L561.61,713.54L578.76,686.6L555.03,687.51L550.82,658.35L506.38,631.77L493.43,591.41L512.93,564.75L499.67,555.05L563.14,481.11L564.87,460.94L605.5,431.12L624.27,431.85L611.75,405.85L593.55,400.48L603.94,368.85L612.92,386.21L602.66,397.97L630.04,368.19L620.33,338.2L589.66,310.51L552.47,299.25L558.42,277.49L549.48,287.25L521.26,269.06L439.95,263.4L419.96,235.03L421.6,254.97L412,251.3L386.67,285.49L369.78,265.67L326.22,266.51L299.92,212.96L319.3,185.4L274.37,172.08L266.47,143.96L237.43,134.4L246.49,115.94L200.19,100.34L250.07,72.2L238.21,64.97L246.07,40.04L227.46,61.96L211.21,59.72L211.86,78.42L182.64,100.19L179.9,128.71L136.78,129.5L156.05,143.11L154.72,160.12L124.42,189.54L94.79,184.49L90.61,216.18L62.18,252L104.18,252.38L112.57,266.24L68.96,312.93L73.26,327.99L94.49,347.89L119.53,333.98L158.06,374.06L179.66,371.25L209.2,392.1L229.02,373.7L238.4,379.16L235.68,419.87L214.52,429.89L224.6,452.48L255.17,454.72L231.64,479.91L248.98,528.74L233.87,574.25L279.1,597.98L238.84,601.94L211.03,629.13L244.17,659.47L262.76,660.65L298.52,713.36L338.26,738.8L373.99,821.65L358.23,864.81L327.79,870.81L248.49,833.67L231.84,762.99L150.33,763.92L199.97,840.1L195.31,853.63L227.17,840.46L243.82,862.49L216.63,922.19L171.63,948.42L210.43,961.68L244.43,937.11L257.9,944.67L247.14,1021.96L257.28,1040.56L263.85,1015.59L287.85,1001.06L303.41,1007.37L306.38,1045.43L333.58,1031.29L351.84,1057.01L368.21,1058.34zM24.63,0L0.38,22.35L34.33,41.99L24.8,62.9L67.3,33.6L54.17,20.92L24.63,0z" />
@@ -204,11 +179,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path d="M682.01,946.6L799.58,837.92L757.13,602.57L551.32,425.28L610.3,351.73L558.47,255.81L664.99,201.3L504.81,256.55L163.7,0L0.42,61.44L117.44,424.21L250.19,547.37L397.02,533.57L437,630L222.37,727.73L293.28,828.4L686.06,809.68L682.01,946.6z" />
               </Link>
@@ -233,11 +203,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -258,11 +223,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path
@@ -285,11 +245,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -310,11 +265,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path
@@ -337,11 +287,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -362,11 +307,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path
@@ -389,11 +329,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -414,11 +349,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path
@@ -441,11 +371,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -466,11 +391,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path
@@ -493,11 +413,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -519,11 +434,6 @@ export default function FranceMap() {
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
               >
                 <path
                   className={
@@ -544,11 +454,6 @@ export default function FranceMap() {
                 }
                 onMouseLeave={() =>
                   handleMouseLeave() as unknown as MouseEventHandler<HTMLAnchorElement>
-                }
-                onClick={() =>
-                  handleMouseClick(
-                    focusedRegion
-                  ) as unknown as MouseEventHandler<HTMLAnchorElement>
                 }
               >
                 <path
