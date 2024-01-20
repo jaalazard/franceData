@@ -14,4 +14,5 @@ const getDepartmentById = async (req: Request, res: Response) => {
   }
 }
 
+
 export { getDepartmentById };
