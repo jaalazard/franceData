@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import database from '../database';
 
-const getDepartmentById = async (req: Request, res: Response) => {
+const getDepartmentByCode = async (req: Request, res: Response) => {
   try {
-    const departmentId = req.params.departmentId;   
-    const data = await database.query(`SELECT * FROM departement WHERE departement_id = '${departmentId}'`);
+    const departmentCode = req.params.departmentCode;   
+    const data = await database.query(`SELECT * FROM departement WHERE departement_code = '${departmentCode}'`);
     const department = data; 
     
     res.status(200).json(department);
@@ -15,4 +15,4 @@ const getDepartmentById = async (req: Request, res: Response) => {
 }
 
 
-export { getDepartmentById };
+export { getDepartmentByCode };
