@@ -152,8 +152,8 @@ export default function DepartmentDetails() {
             </tr>
           </thead>
           <tbody>
-            {towns?.map((town) => (
-              <tr className="border-b border-gray-200 ">
+            {towns?.map((town, index) => (
+              <tr key={index} className="border-b border-gray-200 ">
                 <th
                   scope="row"
                   className="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 "
