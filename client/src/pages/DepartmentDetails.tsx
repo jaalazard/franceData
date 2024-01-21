@@ -152,8 +152,8 @@ export default function DepartmentDetails() {
             </tr>
           </thead>
           <tbody>
-            {towns?.map((town) => (
-              <tr className="border border-gray-200">
+            {towns?.map((town, index) => (
+              <tr key={index} className="border-b border-gray-200 ">
                 <th
                   className="text-center sm:px-6 sm:py-4 font-medium text-dark whitespace-nowrap bg-gray-50"
                 > {town.ville_nom_reel.length > 18 ? town.ville_nom_reel.slice(0, 18) + "..." : town.ville_nom_reel}
