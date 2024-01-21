@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Department, Town } from "../../../types/src";
-import { useParams } from "react-router-dom";
-import Layout from "../components/Layout";
-import ArrowUpAndDown from "../components/icons/ArrowupAndDown";
+import { useEffect, useState } from"react";
+import { Department, Town } from"../../../types/src";
+import { useParams } from"react-router-dom";
+import Layout from"../components/Layout";
+import ArrowUpAndDown from"../components/icons/ArrowupAndDown";
 
 export default function DepartmentDetails() {
   const departmentId = useParams<{ id: string }>().id;
@@ -71,14 +71,14 @@ export default function DepartmentDetails() {
   }, [departmentId]);
 
   const handleCityNameOrderChange = () => {
-    cityNameOrder === "asc"
-      ? setTowns(towns.slice().reverse())
-      : setTowns(towns.slice().reverse());
-    setCityNameOrder(cityNameOrder === "asc" ? "desc" : "asc");
+    cityNameOrder ==="asc"
+      ? setTowns(towns.sort((a, b) => a.ville_nom_reel.localeCompare(b.ville_nom_reel)))
+      : setTowns(towns.sort((a, b) => b.ville_nom_reel.localeCompare(a.ville_nom_reel)))
+    setCityNameOrder(cityNameOrder ==="asc" ?"desc" :"asc");
   };
 
   const handlePostalCodeOrderChange = () => {
-    postalCodeOrder === "asc"
+    postalCodeOrder ==="asc"
       ? setTowns(
           towns.sort(
             (a, b) =>
@@ -91,11 +91,11 @@ export default function DepartmentDetails() {
               parseInt(b.ville_code_postal) - parseInt(a.ville_code_postal)
           )
         );
-    setPostalCodeOrder(postalCodeOrder === "asc" ? "desc" : "asc");
+    setPostalCodeOrder(postalCodeOrder ==="asc" ?"desc" :"asc");
   };
 
   const handlePopulationOrderChange = () => {
-    populationOrder === "asc"
+    populationOrder ==="asc"
       ? setTowns(
           towns.sort(
             (a, b) => a.ville_population_2012 - b.ville_population_2012
@@ -106,14 +106,14 @@ export default function DepartmentDetails() {
             (a, b) => b.ville_population_2012 - a.ville_population_2012
           )
         );
-    setPopulationOrder(populationOrder === "asc" ? "desc" : "asc");
+    setPopulationOrder(populationOrder ==="asc" ?"desc" :"asc");
   };
 
   const handleSuperficyOrderChange = () => {
-    superficyOrder === "asc"
+    superficyOrder ==="asc"
       ? setTowns(towns.sort((a, b) => a.ville_surface - b.ville_surface))
       : setTowns(towns.sort((a, b) => b.ville_surface - a.ville_surface));
-    setSuperficyOrder(superficyOrder === "asc" ? "desc" : "asc");
+    setSuperficyOrder(superficyOrder ==="asc" ?"desc" :"asc");
   };
 
   return (
@@ -123,29 +123,29 @@ export default function DepartmentDetails() {
       </h1>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="mx-auto text-sm text-center text-dark">
-          <thead className="text-xs text-gray-700 uppercase">
+          <thead className="text-xs text-dark uppercase">
             <tr>
-              <th scope="col" className="px-6 py-3 bg-gray-50">
+              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-50">
                 Commune
-                <button onClick={handleCityNameOrderChange} className="ml-4">
+                <button onClick={handleCityNameOrderChange} className="sm:ml-4 ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-100">
                 Code Postal
-                <button onClick={handlePostalCodeOrderChange} className="ml-4">
+                <button onClick={handlePostalCodeOrderChange} className="sm:ml-4 ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
-              <th scope="col" className="px-6 py-3 bg-gray-50">
+              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-50">
                 Population
-                <button onClick={handlePopulationOrderChange} className="ml-4">
+                <button onClick={handlePopulationOrderChange} className="sm:ml-4 ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-100">
                 Superficie
-                <button onClick={handleSuperficyOrderChange} className="ml-4">
+                <button onClick={handleSuperficyOrderChange} className="sm:ml-4 ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
@@ -155,18 +155,16 @@ export default function DepartmentDetails() {
             {towns?.map((town, index) => (
               <tr key={index} className="border-b border-gray-200 ">
                 <th
-                  scope="row"
-                  className="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 "
-                >
-                  {town.ville_nom_reel}
+                  className="text-center sm:px-6 sm:py-4 font-medium text-dark whitespace-nowrap bg-gray-50"
+                > {town.ville_nom_reel.length > 18 ? town.ville_nom_reel.slice(0, 18) + "..." : town.ville_nom_reel}
                 </th>
-                <td className="text-center px-6 py-4">
+                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-100">
                   {town.ville_code_postal}
                 </td>
-                <td className="text-center px-6 py-4 bg-gray-50">
+                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-50">
                   {town.ville_population_2012}
                 </td>
-                <td className="text-center px-6 py-4">{town.ville_surface}</td>
+                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-100">{town.ville_surface}</td>
               </tr>
             ))}
           </tbody>
