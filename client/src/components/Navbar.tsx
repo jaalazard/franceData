@@ -1,7 +1,10 @@
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-
+import { useState } from "react";
+import BurgerMenu from "./icons/BurgerMenu";
+import Close from "./icons/Close";
 export default function Navbar() {
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false);
   const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
   const { setIsLoggedIn } = useAuth();
 
@@ -22,11 +25,22 @@ export default function Navbar() {
     }
   };
 
+  const handleNavBarToggle = () => {
+    const navbar = document.getElementById("navbar-default");
+    if (navbar?.classList.contains("hidden")) {
+      navbar?.classList.remove("hidden");
+      setIsBurgerMenuOpen(true);
+    } else {
+      navbar?.classList.add("hidden");
+      setIsBurgerMenuOpen(false);
+    }
+  };
+
   return (
     <nav className="bg-primary border-dark">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
         <Link to="/">
-          <img src="france.png" className="h-8" alt="France Logo" />
+          <img src="/france.png" className="h-8" alt="France Logo" />
         </Link>
         <Link to="/">
           <span className="self-center text-2xl font-semibold whitespace-nowrap">
@@ -36,29 +50,16 @@ export default function Navbar() {
         <button
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark rounded-lg md:hidden hover:bg-dark focus:outline-none focus:ring-2 focus:ring-dark"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark rounded-lg md:hidden focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded="false"
+          onClick={handleNavBarToggle}
         >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
+          {" "}
+          {isBurgerMenuOpen ? <Close /> : <BurgerMenu />}
         </button>
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-dark md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+          <ul className="font-medium flex flex-col items-end p-4 md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse">
             <li>
               {isLoggedIn ? (
                 <Link
@@ -80,15 +81,15 @@ export default function Navbar() {
               )}
             </li>
             {!isLoggedIn && (
-            <li>
-              <Link
-                to="/register"
-                className="block py-2 px-3 text-dark hover:text-light"
-                aria-current="page"
-              >
-                Inscription
-              </Link>
-            </li>
+              <li>
+                <Link
+                  to="/register"
+                  className="block py-2 px-3 text-dark hover:text-light"
+                  aria-current="page"
+                >
+                  Inscription
+                </Link>
+              </li>
             )}
           </ul>
         </div>
