@@ -2,7 +2,8 @@ import { useEffect, useState } from"react";
 import { Department, Town } from"../../../types/src";
 import { useParams } from"react-router-dom";
 import Layout from"../components/Layout";
-import ArrowUpAndDown from"../components/icons/ArrowupAndDown";
+import ArrowUpAndDown from"../components/icons/ArrowUpAndDown";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function DepartmentDetails() {
   const departmentId = useParams<{ id: string }>().id;
@@ -169,6 +170,7 @@ export default function DepartmentDetails() {
             ))}
           </tbody>
         </table>
+        <ScrollToTopButton />
       </div>
     </Layout>
   );
