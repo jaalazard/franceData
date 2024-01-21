@@ -5,10 +5,9 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      // Si vous avez des alias de chemin, configurez-les ici
     },
     "outDir": "./dist",
-    "noEmit": false // Vous voudrez probablement générer des fichiers .js pour votre application front-end
+    "noEmit": false 
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]

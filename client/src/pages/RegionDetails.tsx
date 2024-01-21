@@ -63,7 +63,7 @@ export default function RegionDetails() {
 
   return (
     <Layout>
-      <h1 className="text-dark text-center text-3xl font-bold mt-8 mb-4">
+      <h1 className="text-dark text-center text-2xl font-bold mt-8 mb-4 text-nowrap">
         {region?.region_nom}
       </h1>
       <div className="flex items-center justify-center">

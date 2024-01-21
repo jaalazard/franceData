@@ -41,8 +41,8 @@ export default function FranceMap() {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row lg:space-x-24 pb-16">
-        <div className="order-2 lg:order-1 lg:pt-44 lg:pl-32 lg:w-1/12 hidden sm:flex pb-8 flex-row lg:flex-col mx-auto gap-1">
+      <div className="flex flex-col lg:flex-row lg:space-x-24 sm:pb-16 pt-8 xl:pt-16">
+        <div className="order-2 lg:order-1 pt-24 lg:pl-32 lg:w-1/12 hidden sm:flex flex-row lg:flex-col mx-auto gap-1">
           <svg
             className={
               focusedRegion === "REU"
@@ -185,7 +185,7 @@ export default function FranceMap() {
             </g>
           </svg>
         </div>
-        <div className="hidden sm:flex lg:w-7/12 lg:pl-36 lg:order-2 pt-8">
+        <div className="hidden sm:flex lg:w-7/12 lg:pl-36 lg:order-2">
           <svg
             className="fill-primary stroke-light stroke-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -470,15 +470,15 @@ export default function FranceMap() {
           </svg>{" "}
         </div>
 
-        <div className="lg:w-4/12 lg:flex lg:pt-44 text-dark lg:order-3 sm:hidden">
-          <ul className="text-center p-4 sm:p-0">
+        <div className="lg:w-4/12 lg:flex sm:pt-24 text-dark lg:order-3 sm:hidden">
+          <ul className="p-4 sm:p-0">
             {regions.map((region: Region) => (
               <li
                 key={region.region_code}
                 className={
                   focusedRegion === region.region_code
-                    ? "text-2xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
-                    : "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                    ? "text-xl text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
+                    : "text-lg text-nowrap border-2 rounded-xl border-dark mb-3 bg-primary p-2 sm:mb-1 sm:border-0 sm:rounded-none sm:bg-none sm:p-0 sm:bg-inherit"
                 }
                 onMouseOver={() =>
                   handleMouseEnter(

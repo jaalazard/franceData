@@ -119,34 +119,34 @@ export default function DepartmentDetails() {
 
   return (
     <Layout>
-      <h1 className="text-dark text-center text-3xl font-bold mt-8 mb-4">
+      <h1 className="text-dark text-center text-2xl font-bold mt-8 mb-4">
         {department?.departement_nom}
       </h1>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="mx-auto text-sm text-center text-dark">
-          <thead className="text-xs text-dark uppercase">
-            <tr>
-              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-50">
-                Commune
-                <button onClick={handleCityNameOrderChange} className="sm:ml-4 ml-1">
+        <table className="text-sm text-center text-dark w-full md:w-4/5 md:mx-auto">
+          <thead className="text-xs text-dark sm:uppercase">
+            <tr className="flex flex-row">
+              <th scope="col" className="flex flex-col items-center sm:px-6 sm:py-3 bg-gray-50 w-2/5">
+                <span>Commune</span>
+                <button onClick={handleCityNameOrderChange} className="ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
-              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-100">
-                Code Postal
-                <button onClick={handlePostalCodeOrderChange} className="sm:ml-4 ml-1">
+              <th scope="col" className="flex flex-col items-center sm:px-6 sm:py-3 bg-gray-100 w-1/5">
+              <span>C.P</span>
+                <button onClick={handlePostalCodeOrderChange} className="ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
-              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-50">
-                Population
-                <button onClick={handlePopulationOrderChange} className="sm:ml-4 ml-1">
+              <th scope="col" className="flex flex-col items-center sm:px-6 sm:py-3 bg-gray-50 w-1/5">
+              <span>Habitants</span>
+                <button onClick={handlePopulationOrderChange} className="ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
-              <th scope="col" className="sm:px-6 sm:py-3 bg-gray-100">
-                Superficie
-                <button onClick={handleSuperficyOrderChange} className="sm:ml-4 ml-1">
+              <th scope="col" className="flex flex-col items-center sm:px-6 sm:py-3 bg-gray-100 w-1/5">
+              <span>Surface</span>
+                <button onClick={handleSuperficyOrderChange} className="ml-1">
                   <ArrowUpAndDown />
                 </button>
               </th>
@@ -154,18 +154,18 @@ export default function DepartmentDetails() {
           </thead>
           <tbody>
             {towns?.map((town, index) => (
-              <tr key={index} className="border-b border-gray-200 ">
+              <tr key={index} className="flex flex-row border-b border-gray-200 sm:hover:text-lg">
                 <th
-                  className="text-center sm:px-6 sm:py-4 font-medium text-dark whitespace-nowrap bg-gray-50"
+                  className="text-center sm:px-6 sm:py-4 font-medium text-dark whitespace-nowrap bg-gray-50 w-2/5"
                 > {town.ville_nom_reel.length > 18 ? town.ville_nom_reel.slice(0, 18) + "..." : town.ville_nom_reel}
                 </th>
-                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-100">
+                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-100 w-1/5">
                   {town.ville_code_postal}
                 </td>
-                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-50">
+                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-50 w-1/5">
                   {town.ville_population_2012}
                 </td>
-                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-100">{town.ville_surface}</td>
+                <td className="text-center sm:px-6 sm:py-4 p-1 bg-gray-100 w-1/5">{town.ville_surface}</td>
               </tr>
             ))}
           </tbody>
