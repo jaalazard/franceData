@@ -123,7 +123,7 @@ export default function DepartmentDetails() {
         {department?.departement_nom}
       </h1>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="text-sm text-center text-dark w-full md:w-4/5 md:mx-auto">
+        <table className="bordetext-sm text-center text-dark w-full md:w-4/5 md:mx-auto">
           <thead className="text-xs text-dark sm:uppercase">
             <tr className="flex flex-row">
               <th scope="col" className="flex flex-col items-center sm:px-6 sm:py-3 bg-gray-50 w-2/5">

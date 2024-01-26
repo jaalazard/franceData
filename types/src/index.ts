@@ -3,6 +3,12 @@ export interface AuthProviderState {
   setIsLoggedIn: (value: boolean) => void;
 }
 
+export interface User {
+  id: string;
+  email: string;
+  password: string;
+}
+
 export interface Region {
   region_id: number;
   region_code: string;

@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RegionDetails from "./pages/RegionDetails";
 import DepartmentDetails from "./pages/DepartmentDetails";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/departement/:id",
     element: <DepartmentDetails />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
   {
     path: "*",
