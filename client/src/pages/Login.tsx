@@ -32,7 +32,7 @@ if(data.isLoggedIn) {
   return (
     <Layout>
     <section>
-  <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+  <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
       <Link to="/" className="flex items-center mb-6 text-2xl font-semibold text-dark">
           <img className="w-8 h-8 mr-2" src="france.png" alt="France"/>
           FranceData   
