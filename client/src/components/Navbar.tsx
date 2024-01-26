@@ -5,6 +5,7 @@ import BurgerMenu from "./icons/BurgerMenu";
 import Close from "./icons/Close";
 export default function Navbar() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false);
+  const [isTitleHovered, setIsTitleHovered] = useState<boolean>(false);
   const { isLoggedIn } = useAuth() as { isLoggedIn: boolean };
   const { setIsLoggedIn } = useAuth();
 
@@ -36,45 +37,67 @@ export default function Navbar() {
     }
   };
 
+  const handleTitleHover = () => {
+    setIsTitleHovered(isTitleHovered ? false : true);
+  };
+
   return (
     <nav className="bg-primary border-dark">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
         <Link to="/">
-          <img src="/france.png" className="h-8" alt="France Logo" />
+          <img
+            src="/france.png"
+            className={!isBurgerMenuOpen ? "h-8" : "hidden"}
+            alt="France Logo"
+          />
         </Link>
         <Link to="/">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap">
-            FranceData
-          </span>
+          <div
+            className={
+              !isBurgerMenuOpen
+                ? "self-center text-2xl font-semibold whitespace-nowrap"
+                : "hidden"
+            }
+            onMouseEnter={handleTitleHover}
+            onMouseLeave={handleTitleHover}
+          >
+            <span className={isTitleHovered ? "text-blue-700" : "text-dark"}>
+              Fra
+            </span>
+            <span className={isTitleHovered ? "text-white" : "text-dark"}>
+              nce
+            </span>
+            <span className={isTitleHovered ? "text-red-700" : "text-dark"}>
+              Data
+            </span>
+          </div>
         </Link>
         <button
-          data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark rounded-lg md:hidden focus:outline-none"
+          className="border border-dark inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark rounded-lg md:hidden focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded="false"
           onClick={handleNavBarToggle}
         >
-          {" "}
           {isBurgerMenuOpen ? <Close /> : <BurgerMenu />}
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-medium flex flex-col items-end p-4 md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse">
+        <div
+          className={`md:flex ${isBurgerMenuOpen ? "block" : "hidden"}`}
+          id="navbar-default"
+        >
+          <ul className="font-bold flex flex-row md:flex-row md:space-x-8 rtl:space-x-reverse">
             <li>
               {isLoggedIn ? (
-                <Link
-                  to="/login"
+                <button
                   className="block py-2 px-3 text-dark hover:text-light"
-                  aria-current="page"
                   onClick={handleLogout}
                 >
                   Déconnexion
-                </Link>
+                </button>
               ) : (
                 <Link
                   to="/login"
                   className="block py-2 px-3 text-dark hover:text-light"
-                  aria-current="page"
                 >
                   Connexion
                 </Link>
@@ -85,7 +108,6 @@ export default function Navbar() {
                 <Link
                   to="/register"
                   className="block py-2 px-3 text-dark hover:text-light"
-                  aria-current="page"
                 >
                   Inscription
                 </Link>
