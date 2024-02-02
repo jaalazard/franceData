@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const { setIsLoggedIn } = useAuth();
+
 
   const handleRegisterSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -19,6 +24,8 @@ export default function Register() {
       },
       body: JSON.stringify({ email, password }),
     });
+    setIsLoggedIn(true);
+    navigate("/");
   };
   return (
     <Layout>

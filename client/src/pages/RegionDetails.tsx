@@ -69,7 +69,7 @@ export default function RegionDetails() {
       <div className="flex items-center justify-center">
         <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-1">
           {departments.map((department: Department) => (
-            <div key={department.departement_code} className="max-w-lg rounded-xl overflow-hidden shadow-xl hover:scale-105 transition duration-700">
+            <div key={department.departement_code} className="mb-2 sm:mb-0 max-w-lg rounded-xl overflow-hidden shadow-xl sm:hover:scale-105 transition duration-700">
               <Link to={`/departement/${department.departement_code}`}>
                 <img
                   className="w-full"
