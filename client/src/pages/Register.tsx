@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from '../../contexts/AuthContext'
+import { useAuth } from "../../contexts/AuthContext";
+import Alert from "../components/icons/Alert";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function Register() {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const { setIsLoggedIn } = useAuth();
-
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handleRegisterSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -24,9 +25,17 @@ export default function Register() {
       },
       body: JSON.stringify({ email, password }),
     });
-    setIsLoggedIn(true);
-    navigate("/");
+    const data = await res.json();
+
+    if (data.isLoggedIn) {
+      setIsLoggedIn(true);
+      navigate("/");
+    }
+    if (data.errors) {
+      setErrors(data.errors);
+    }
   };
+
   return (
     <Layout>
       <section className="bg-light">
@@ -38,6 +47,11 @@ export default function Register() {
             <img className="w-8 h-8 mr-2" src="france.png" alt="France" />
             FranceData
           </Link>
+          {errors.map((error) => (
+          <div key={error} className="text-red-500 flex">
+            <Alert /> {error}
+          </div>
+        ))}
           <div className="w-full bg-light shadow md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 rounded-lg md:space-y-6 sm:p-8 bg-primary">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-dark md:text-2xl ">
@@ -111,7 +125,6 @@ export default function Register() {
 
                 <button
                   type="submit"
-                  disabled={password !== confirmPassword}
                   className="w-full text-dark focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-light hover:text-primary"
                 >
                   Valider

@@ -11,7 +11,6 @@ const getTownsByDepartment = async (req: Request, res: Response) => {
       
       res.status(200).json(towns);
     } catch (err) {
-      console.log(err);
       res.status(500).json(err);
     }
   }

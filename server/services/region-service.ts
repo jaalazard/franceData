@@ -7,7 +7,6 @@ const getRegions = async (req: Request, res: Response) => {
     const regions = data[0];
     res.status(200).json(regions);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 }
@@ -19,7 +18,6 @@ const getRegionById = async (req: Request, res: Response) => {
     const region = data[0]; 
     res.status(200).json(region);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 }
@@ -31,7 +29,6 @@ const getDepartmentsByRegion = async (req: Request, res: Response) => {
     const departments = data[0];
     res.status(200).json(departments);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 };
