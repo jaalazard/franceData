@@ -14,7 +14,10 @@ authRouter.get("/check", async (req: Request, res: Response) => {
     return res.json({ isLoggedIn: false });
   } else {
     try {
-      const { payload } = await jwtVerify(jwt, new TextEncoder().encode(process.env.JWT_SECRET));
+      const { payload } = await jwtVerify(
+        jwt,
+        new TextEncoder().encode(process.env.JWT_SECRET)
+      );
       return res.json({ isLoggedIn: true });
     } catch (error) {
       return res.json({ isLoggedIn: false });
@@ -23,31 +26,71 @@ authRouter.get("/check", async (req: Request, res: Response) => {
 });
 
 authRouter.post("/register", async (req: Request, res: Response) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    const insertedUser = await database.query(
-      "INSERT INTO user (email, password) VALUES (?, ?)",
-      [req.body.email, hashedPassword]
-    );
-    return res.json({
-      ok: true,
-    });
-  } catch (error: any) {
+  const errors = [];
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(req.body.email)) {
+    errors.push("Format d'e-mail invalide");
+  }
+
+  const passwordRegex = /^.{6,}$/;
+  if (!passwordRegex.test(req.body.password)) {
+    errors.push("Le mot de passe doit contenir au moins 6 caractères");
+  }
+
+  const isPasswordConfirmed = req.body.password === req.body.confirmPassword;
+  if (!isPasswordConfirmed) {
+    errors.push("Les mots de passe ne correspondent pas");
+  }
+
+  const [existingUsers] = await database.query<RowDataPacket[]>(
+    "SELECT * FROM user WHERE email = ?",
+    [req.body.email]
+  );
+  if (existingUsers.length > 0) {
+    errors.push("Cet e-mail est déjà enregistré");
+  }
+
+  if (errors.length < 1) {
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const insertedUser = await database.query(
+        "INSERT INTO user (email, password) VALUES (?, ?)",
+        [req.body.email, hashedPassword]
+      );
+      return res.json({
+        ok: true,
+        isLoggedIn: true,
+      });
+    } catch (error: any) {
+      return res.json({
+        ok: false,
+        error: error.message,
+      });
+    }
+  } else {
     return res.json({
       ok: false,
-      error: error.message,
+      errors,
     });
   }
 });
 
 authRouter.post("/login", async (req: Request, res: Response) => {
+  const errors = [];
   try {
-    const [users] = await database.query<RowDataPacket[]>("SELECT * FROM user WHERE email = ?", [req.body.email]);    console.log(users);
-    
+    const [users] = await database.query<RowDataPacket[]>(
+      "SELECT * FROM user WHERE email = ?",
+      [req.body.email]
+    );
+    if (users.length < 1) {
+      errors.push("E-mail ou mot de passe incorrect");
+    }
     const user = users[0];
-console.log(user);
 
-    const isCorrectPassword = await bcrypt.compare(req.body.password, user.password);
+    const isCorrectPassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
     const jwt = await new SignJWT({ sub: user.email })
       .setProtectedHeader({ alg: "HS256" })
       .setIssuedAt()
@@ -71,7 +114,7 @@ console.log(user);
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ errors });
   }
 });
 
@@ -82,7 +125,7 @@ authRouter.post("/logout", async (req: Request, res: Response) => {
     sameSite: "lax",
     expires: new Date(0),
   });
-  res.status(200).send('Déconnecté avec succès');
+  res.status(200).send("Déconnecté avec succès");
 });
 
 export default authRouter;

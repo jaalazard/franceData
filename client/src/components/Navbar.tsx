@@ -86,6 +86,25 @@ export default function Navbar() {
           id="navbar-default"
         >
           <ul className="font-bold flex flex-row md:flex-row md:space-x-8 rtl:space-x-reverse">
+            {!isLoggedIn ? (
+              <li>
+                <Link
+                  to="/register"
+                  className="block py-2 px-3 text-dark hover:text-light"
+                >
+                  Inscription
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/profile"
+                  className="block py-2 px-3 text-dark hover:text-light"
+                >
+                  Mon compte
+                </Link>
+              </li>
+            )}
             <li>
               {isLoggedIn ? (
                 <button
@@ -103,16 +122,6 @@ export default function Navbar() {
                 </Link>
               )}
             </li>
-            {!isLoggedIn && (
-              <li>
-                <Link
-                  to="/register"
-                  className="block py-2 px-3 text-dark hover:text-light"
-                >
-                  Inscription
-                </Link>
-              </li>
-            )}
           </ul>
         </div>
       </div>
