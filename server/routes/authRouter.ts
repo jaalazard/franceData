@@ -27,6 +27,7 @@ authRouter.get("/check", async (req: Request, res: Response) => {
 
 authRouter.post("/register", async (req: Request, res: Response) => {
   const errors = [];
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(req.body.email)) {
     errors.push("Format d'e-mail invalide");
@@ -37,8 +38,7 @@ authRouter.post("/register", async (req: Request, res: Response) => {
     errors.push("Le mot de passe doit contenir au moins 6 caractères");
   }
 
-  const isPasswordConfirmed = req.body.password === req.body.confirmPassword;
-  if (!isPasswordConfirmed) {
+  if (req.body.password !== req.body.confirmPassword) {
     errors.push("Les mots de passe ne correspondent pas");
   }
 
@@ -58,18 +58,15 @@ authRouter.post("/register", async (req: Request, res: Response) => {
         [req.body.email, hashedPassword]
       );
       return res.json({
-        ok: true,
         isLoggedIn: true,
       });
     } catch (error: any) {
       return res.json({
-        ok: false,
         error: error.message,
       });
     }
   } else {
     return res.json({
-      ok: false,
       errors,
     });
   }
@@ -82,15 +79,15 @@ authRouter.post("/login", async (req: Request, res: Response) => {
       "SELECT * FROM user WHERE email = ?",
       [req.body.email]
     );
-    if (users.length < 1) {
-      errors.push("E-mail ou mot de passe incorrect");
-    }
     const user = users[0];
 
     const isCorrectPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
+    if (!isCorrectPassword || users.length < 1) {
+      errors.push("E-mail ou mot de passe incorrect");
+    }
     const jwt = await new SignJWT({ sub: user.email })
       .setProtectedHeader({ alg: "HS256" })
       .setIssuedAt()
@@ -107,10 +104,9 @@ authRouter.post("/login", async (req: Request, res: Response) => {
     });
 
     return res.json({
-      message: "Success",
       token: jwt,
-      ok: true,
       isLoggedIn: isCorrectPassword,
+      errors,
     });
   } catch (error) {
     console.error(error);

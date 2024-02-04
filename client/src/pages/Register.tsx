@@ -23,7 +23,7 @@ export default function Register() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, confirmPassword }),
     });
     const data = await res.json();
 
@@ -130,7 +130,7 @@ export default function Register() {
                   Valider
                 </button>
                 <p className="text-sm font-light text-dark">
-                  Vous avez déjà un compte ?{" "}
+                  Vous avez déjà un compte ?
                   <Link to="/login" className="font-medium hover:underline">
                     Se connecter
                   </Link>
